@@ -24,7 +24,7 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True)
     meterNumber = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
-# db.create_all()
+db.create_all()
 
 class Transaction(db.Model):
     __tablename__ = "transactions"
@@ -32,7 +32,7 @@ class Transaction(db.Model):
     #Create Foreign Key, "users.id" the users refers to the tablename of User.
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     balance = db.Column(db.Integer)
-# db.create_all()
+db.create_all()
 
 # Home route
 @app.route('/')
@@ -64,11 +64,11 @@ def login():
     d = {}
     if request.method == 'POST':
         mail = request.form["email"]
-        password_put = request.form["password"]
+        password = request.form["password"]
         # Check if the user exists
-        login = User.query.filter_by(email=mail).first()
-        password_match = check_password_hash(login.password, password_put)
-        if password_match == False:
+        login = User.query.filter_by(email=mail, password=password).first()
+        # password_match = check_password_hash(login.password, password)
+        if login is None:
             return jsonify(["Wrong Credentials"])
         else:
             return jsonify([ "Login Successful"])
