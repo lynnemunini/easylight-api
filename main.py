@@ -24,7 +24,7 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True)
     meterNumber = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
-db.create_all()
+# db.create_all()
 
 class Transaction(db.Model):
     __tablename__ = "transactions"
@@ -32,7 +32,7 @@ class Transaction(db.Model):
     #Create Foreign Key, "users.id" the users refers to the tablename of User.
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     balance = db.Column(db.Integer)
-db.create_all()
+# db.create_all()
 
 # Home route
 @app.route('/')
