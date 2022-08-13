@@ -47,7 +47,7 @@ def register():
         mail = request.form['email']
         meterNumber = request.form['meterNumber']
         password = request.form.get('password')
-        password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
+        # password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
 
         email = User.query.filter_by(email=mail).first()
         if email is None:
