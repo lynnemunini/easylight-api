@@ -64,10 +64,10 @@ def login():
     d = {}
     if request.method == 'POST':
         mail = request.form["email"]
-        password = request.form["password"]
+        password_put = request.form["password"]
         # Check if the user exists
-        login = User.query.filter_by(email=mail, password=password).first()
-        password_match = check_password_hash(login.password, password)
+        login = User.query.filter_by(email=mail).first()
+        password_match = check_password_hash(login.password, password_put)
         if password_match == False:
             return jsonify(["Wrong Credentials"])
         else:
