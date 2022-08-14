@@ -2,6 +2,7 @@ certifi==2022.6.15
 charset-normalizer==2.1.0
 click==8.1.3
 Flask==2.1.2
+Flask-Admin==1.6.0
 Flask-SQLAlchemy==2.5.1
 greenlet==1.1.2
 gunicorn==20.1.0
@@ -17,4 +18,5 @@ SQLAlchemy==1.4.37
 twilio==7.12.1
 urllib3==1.26.11
 Werkzeug==2.1.2
+WTForms==3.0.1
 zipp==3.8.0

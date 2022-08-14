@@ -1,10 +1,9 @@
-from flask import Blueprint, request, json, jsonify, Flask
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import request, jsonify, Flask
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import relationship
-import requests
 from twilio.rest import Client
 import os
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 
 app = Flask(__name__)
@@ -33,6 +32,10 @@ class Transaction(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     balance = db.Column(db.Integer)
 # db.create_all()
+
+admin = Admin(app, name='Dashboard')
+admin.add_view(ModelView(User, db.session))
+admin.add_view(ModelView(Transaction, db.session))
 
 # Home route
 @app.route('/')
