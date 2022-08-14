@@ -91,6 +91,6 @@ if __name__ == "__main__":
     # host='0.0.0.0', port=5000
     # Check if balance in Transaction table is equal to 1
     # if balance is equal to 1, send sms
-    if Transaction.query.filter_by(balance=1).first() is not None:
+    if Transaction.query.filter_by(balance=1).first() is None:
         sendSms()
     app.run()
