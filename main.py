@@ -7,7 +7,7 @@ from flask_admin.contrib.sqla import ModelView
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 ##CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tokens.db'
@@ -77,8 +77,8 @@ def login():
             return jsonify([ "Login Successful"])
 
 def sendSms():
-    account_sid = 'AC893d53f4b3ae96b506f4f9880c9fddc8'
-    auth_token = 'd35b85750ac83aaa4f203d4598a21fe0'
+    account_sid = os.environ.get('ACCOUNT_SID')
+    auth_token = os.environ.get('AUTH_TOKEN')
     client = Client(account_sid, auth_token)
     message = client.messages.create(
         body='Your meter has been charged $10.00',
