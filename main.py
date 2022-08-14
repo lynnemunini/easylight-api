@@ -93,4 +93,4 @@ if __name__ == "__main__":
     # if balance is equal to 1, send sms
     if Transaction.query.filter_by(balance=1).first() is not None:
         sendSms()
-    app.run(debug=True)
+    app.run()
