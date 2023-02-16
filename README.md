@@ -8,10 +8,6 @@ If successful, the user will be redirected to the app.
 
 The API is hosted on Heroku and can be accessed from any device connected to the internet.
 
-## Admin Dashboard
-
-The admin dashboard is a web application that allows the admin to manage the app. To access the admin dashboard for the app use the following link [Admin Dashboard](http://easylight.herokuapp.com/admin)
-
 ## Installation
 
 Clone the repository and install dependencies:
